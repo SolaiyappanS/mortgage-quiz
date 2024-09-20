@@ -29,7 +29,7 @@ let options = {
     { word: "Collateral", hint: "Assets pledged as security for a loan" },
     {
       word: "EMI",
-      hint: "Equated Monthly Installment, a fixed monthly payment for a loan",
+      hint: "A fixed monthly payment for a loan",
     },
   ],
 };
