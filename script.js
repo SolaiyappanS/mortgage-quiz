@@ -71,7 +71,7 @@ const youWin = () => {
     button.disabled.true;
   });
   winContainer.classList.remove("hide");
-  if (wordCount > 1) {
+  if (wordCount > 8) {
     winButton.classList.add("hide");
     nextGameContainer.classList.remove("hide");
   }
