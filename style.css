@@ -109,18 +109,6 @@ canvas {
 #result-text span {
   font-weight: 600;
 }
-#win-button,
-#lose-button {
-  font-size: 1.25em;
-  padding: 0.5em 1em;
-  background-color: #fff;
-  border: 3px solid #009fc7;
-  color: #009fc7;
-  border-radius: 0.2em;
-  cursor: pointer;
-  position: absolute;
-  bottom: 10%;
-}
 .win-msg {
   color: #39d78d;
 }
@@ -171,14 +159,16 @@ span.dashes {
   color: #009fc7;
 }
 
-#next_game button {
+#next_game button,
+#win-button,
+#lose-button {
   background-color: #009fc7;
   color: #fff;
   outline: none;
   border: none;
   border-radius: 5px;
   padding: 10px 30px;
-  font-size: 30px;
+  font-size: 25px;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -187,11 +177,11 @@ span.dashes {
   bottom: 10%;
 }
 
-#buttons .button1 {
+#next_game .button1 {
   left: 10%;
 }
 
-#buttons .button2 {
+#next_game .button2 {
   right: 10%;
 }
 

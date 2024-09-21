@@ -9,6 +9,8 @@ const winButton = document.getElementById("win-button");
 const loseButton = document.getElementById("lose-button");
 const chosenWordContainer_1 = document.getElementById("chosenWord_1");
 const chosenWordContainer_2 = document.getElementById("chosenWord_2");
+const nextGameContainer = document.getElementById("next_game");
+const heartContainer = document.getElementById("heart-container");
 let wordCount = 0;
 
 //Options values for buttons
@@ -39,6 +41,7 @@ let options = {
 //count
 let winCount = 0;
 let loseCount = 0;
+heartContainer.innerHTML = new Array(5 - loseCount).fill("❤️").join("");
 let count = 0;
 
 let chosenWord = "";
@@ -68,7 +71,10 @@ const youWin = () => {
     button.disabled.true;
   });
   winContainer.classList.remove("hide");
-  if (wordCount > 8) winButton.classList.add("hide");
+  if (wordCount > 1) {
+    winButton.classList.add("hide");
+    nextGameContainer.classList.remove("hide");
+  }
 };
 
 //Block all the Buttons
@@ -184,9 +190,11 @@ function chooseLetter(chosenWord1, letterText) {
     !document.getElementById("letter_" + letterText.toUpperCase()).disabled
   ) {
     loseCount++;
-    if (loseCount > 5) {
+    heartContainer.innerHTML = new Array(5 - loseCount).fill("❤️").join("");
+    if (loseCount > 4) {
       youLost();
       loseCount = 0;
+      heartContainer.innerHTML = new Array(5 - loseCount).fill("❤️").join("");
     }
   }
   //disable clicked button1
