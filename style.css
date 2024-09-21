@@ -2,14 +2,14 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 body {
-  background-color: #009fc7;
+  background-color: #cef3fc;
 }
 .container {
   font-size: 16px;
-  background-color: #b7edfb;
+  background-color: #fff;
   width: 90vw;
   max-width: 34em;
   position: absolute;
@@ -31,9 +31,9 @@ body {
 }
 #options-container button {
   padding: 0.6em 1.2em;
-  border: 3px solid #000000;
-  background-color: #b7edfb;
-  color: #000000;
+  border: 3px solid #009fc7;
+  background-color: #fff;
+  color: #009fc7;
   border-radius: 0.3em;
   text-transform: capitalize;
   cursor: pointer;
@@ -44,9 +44,9 @@ body {
   background-color: #efefef;
 }
 #options-container button.active {
-  background-color: #009fc7;
-  border: 3px solid #000000;
-  color: #b7edfb;
+  background-color: #fff;
+  border: 3px solid #009fc7;
+  color: #fff;
 }
 .letter-container {
   width: 100%;
@@ -59,14 +59,18 @@ body {
   height: 3em;
   width: 3em;
   border-radius: 0.3em;
-  background-color: #fff;
+  background-color: #009fc7;
   cursor: pointer;
   border: none;
-  color: #009fc7;
+  color: #fff;
   font-size: 16px;
 }
+#letter-container button:disabled {
+  background-color: #009fc777;
+  cursor: not-allowed;
+}
 .new-game-popup {
-  background-color: #b7edfb;
+  background-color: #fff;
   position: absolute;
   left: 0;
   top: 0;
@@ -88,7 +92,7 @@ body {
 canvas {
   display: block;
   margin: auto;
-  border: 10px solid #009fc7;
+  border: 10px solid #fff;
   border-radius: 10px;
 }
 .hide {
@@ -105,14 +109,17 @@ canvas {
 #result-text span {
   font-weight: 600;
 }
-#new-game-button {
+#win-button,
+#lose-button {
   font-size: 1.25em;
   padding: 0.5em 1em;
-  background-color: #009fc7;
-  border: 3px solid #000000;
-  color: #b7edfb;
+  background-color: #fff;
+  border: 3px solid #009fc7;
+  color: #009fc7;
   border-radius: 0.2em;
   cursor: pointer;
+  position: absolute;
+  bottom: 10%;
 }
 .win-msg {
   color: #39d78d;
@@ -121,8 +128,8 @@ canvas {
   color: #fe5152;
 }
 
-h1 {
-  color: #b7edfb;
+h1.header {
+  color: #009fc7;
   font-size: 45px;
   position: fixed;
   top: 5%;
@@ -131,11 +138,65 @@ h1 {
 }
 
 span.dashes {
-  color: #01556a;
+  color: #009fc7;
+  letter-spacing: 5px;
   font-size: 40px;
 }
 
 #hint-container {
-  color: #01556a;
+  color: #009fc7;
   font-size: 20px;
+}
+
+.result_svg {
+  width: 175px;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#win-container h1,
+#lose-container h1 {
+  position: absolute;
+  top: 10%;
+  color: #009fc7;
+  font-size: 55px;
+}
+
+#win-container h2,
+#lose-container h2 {
+  position: absolute;
+  top: 25%;
+  color: #009fc7;
+}
+
+#next_game button {
+  background-color: #009fc7;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 30px;
+  font-size: 30px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: auto 15px;
+  position: absolute;
+  bottom: 10%;
+}
+
+#buttons .button1 {
+  left: 10%;
+}
+
+#buttons .button2 {
+  right: 10%;
+}
+
+#cooper_logo {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
 }

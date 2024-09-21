@@ -3,10 +3,12 @@ const letterContainer = document.getElementById("letter-container");
 const hintContainer = document.getElementById("hint-container");
 const optionsContainer = document.getElementById("options-container");
 const userInputSection = document.getElementById("user-input-section");
-const newGameContainer = document.getElementById("new-game-container");
-const newGameButton = document.getElementById("new-game-button");
-const canvas = document.getElementById("canvas");
-const resultText = document.getElementById("result-text");
+const winContainer = document.getElementById("win-container");
+const loseContainer = document.getElementById("lose-container");
+const winButton = document.getElementById("win-button");
+const loseButton = document.getElementById("lose-button");
+const chosenWordContainer_1 = document.getElementById("chosenWord_1");
+const chosenWordContainer_2 = document.getElementById("chosenWord_2");
 let wordCount = 0;
 
 //Options values for buttons
@@ -36,6 +38,7 @@ let options = {
 
 //count
 let winCount = 0;
+let loseCount = 0;
 let count = 0;
 
 let chosenWord = "";
@@ -51,9 +54,10 @@ const displayOptions = () => {
 };
 
 //Block all the Buttons
-const blocker = () => {
+const youWin = () => {
   let optionsButtons = document.querySelectorAll(".options");
   let letterButtons = document.querySelectorAll(".letters");
+  chosenWordContainer_1.innerHTML = chosenWord;
   //disable all options
   optionsButtons.forEach((button) => {
     button.disabled = true;
@@ -63,7 +67,25 @@ const blocker = () => {
   letterButtons.forEach((button) => {
     button.disabled.true;
   });
-  newGameContainer.classList.remove("hide");
+  winContainer.classList.remove("hide");
+  if (wordCount > 8) winButton.classList.add("hide");
+};
+
+//Block all the Buttons
+const youLost = () => {
+  let optionsButtons = document.querySelectorAll(".options");
+  let letterButtons = document.querySelectorAll(".letters");
+  chosenWordContainer_2.innerHTML = chosenWord;
+  //disable all options
+  optionsButtons.forEach((button) => {
+    button.disabled = true;
+  });
+
+  //disable all letters
+  letterButtons.forEach((button) => {
+    button.disabled.true;
+  });
+  loseContainer.classList.remove("hide");
 };
 
 //Word Generator
@@ -107,7 +129,8 @@ const initializer = (type) => {
   userInputSection.innerHTML = "";
   optionsContainer.innerHTML = "";
   letterContainer.classList.add("hide");
-  newGameContainer.classList.add("hide");
+  winContainer.classList.add("hide");
+  loseContainer.classList.add("hide");
   letterContainer.innerHTML = "";
 
   //For creating letter buttons
@@ -131,7 +154,8 @@ const initializer = (type) => {
 };
 
 //New Game
-newGameButton.addEventListener("click", () => initializer("continue"));
+winButton.addEventListener("click", () => initializer("continue"));
+loseButton.addEventListener("click", () => initializer("continue"));
 window.onload = initializer("new");
 
 function chooseLetter(chosenWord1, letterText) {
@@ -141,8 +165,6 @@ function chooseLetter(chosenWord1, letterText) {
     charArray.includes(letterText.toUpperCase()) &&
     !document.getElementById("letter_" + letterText.toUpperCase()).disabled
   ) {
-    console.log(letterText);
-
     let dashes = document.getElementsByClassName("dashes");
     charArray.forEach((char, index) => {
       //if character in array is same as clicked button1
@@ -154,10 +176,18 @@ function chooseLetter(chosenWord1, letterText) {
         //if winCount equals word lenfth
         if (winCount == charArray.length) {
           //block all button1s
-          blocker();
+          youWin();
         }
       }
     });
+  } else if (
+    !document.getElementById("letter_" + letterText.toUpperCase()).disabled
+  ) {
+    loseCount++;
+    if (loseCount > 5) {
+      youLost();
+      loseCount = 0;
+    }
   }
   //disable clicked button1
   document.getElementById("letter_" + letterText.toUpperCase()).disabled = true;
