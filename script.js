@@ -16,24 +16,36 @@ let wordsCount = 0;
 //Options values for buttons
 let options = {
   words: [
-    { word: "Mortgage", hint: "A loan secured by real estate" },
     {
-      word: "Loan",
-      hint: "A sum of money lent, typically at interest, with the expectation of repayment",
+      word: "Amortization",
+      hint: "Process of gradual debt repayment, interest then principal",
     },
-    { word: "Finance", hint: "The management of money" },
-    { word: "Savings", hint: "Money set aside for future use" },
-    { word: "Interest", hint: "A charge for the use of money" },
-    { word: "Repayment", hint: "The act of paying back a debt" },
-    { word: "Debt", hint: "A liability to pay or do something" },
     {
-      word: "Credit",
-      hint: "The ability to obtain goods or services before payment",
+      word: "Equity",
+      hint: "The difference between your home's value and mortgage debt",
+    },
+    {
+      word: "Contingency",
+      hint: "Condition in a sales contract that must be fulfilled first",
+    },
+    { word: "Delinquency", hint: "Failure to make payments on time" },
+    { word: "Liabilities", hint: "A person's debts or financial obligations" },
+    {
+      word: "Prepayment",
+      hint: "An amount paid to reduce the principal balance of a loan before the principal is due",
+    },
+    {
+      word: "Forbearance",
+      hint: "Temporary suspension of loan payments due to financial hardship",
+    },
+    {
+      word: "FICO",
+      hint: "A corporation that calculates credit scores assessing credit risk.",
     },
     { word: "Collateral", hint: "Assets pledged as security for a loan" },
     {
-      word: "EMI",
-      hint: "A fixed monthly payment for a loan",
+      word: "Escrow",
+      hint: "Funds held by a third party until conditions are met",
     },
   ],
 };
@@ -125,8 +137,8 @@ const generateWord = (optionValue) => {
 
 function updateHearts() {
   heartContainer.innerHTML =
-    new Array(5 - loseCount).fill("❤️").join("") +
-    new Array(loseCount).fill("🤍").join("");
+    new Array(loseCount).fill("🤍").join("") +
+    new Array(5 - loseCount).fill("❤️").join("");
 }
 
 //Initial Function (Called when page loads/user presses new game)
