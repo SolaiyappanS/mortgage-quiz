@@ -106,6 +106,10 @@ const youLost = () => {
     button.disabled.true;
   });
   loseContainer.classList.remove("hide");
+  if (wordsCount > 8) {
+    loseButton.classList.add("hide");
+    nextGameContainer.classList.remove("hide");
+  }
 };
 
 //Word Generator
