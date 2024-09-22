@@ -11,6 +11,7 @@ body {
   font-size: 16px;
   background-color: #fff;
   width: 60vw;
+  min-height: 60vh;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -48,6 +49,7 @@ body {
   color: #fff;
 }
 .letter-container {
+  margin-top: 75px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -136,9 +138,9 @@ span.dashes {
 }
 
 .result_svg {
-  width: 100px;
+  width: 150px;
   position: absolute;
-  top: 40%;
+  top: 37%;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -148,13 +150,13 @@ span.dashes {
   position: absolute;
   top: 7%;
   color: #009fc7;
-  font-size: 55px;
+  font-size: 50px;
 }
 
 #win-container h2,
 #lose-container h2 {
   position: absolute;
-  top: 27%;
+  top: 25%;
   color: #009fc7;
 }
 
