@@ -11,7 +11,7 @@ const chosenWordContainer_1 = document.getElementById("chosenWord_1");
 const chosenWordContainer_2 = document.getElementById("chosenWord_2");
 const nextGameContainer = document.getElementById("next_game");
 const heartContainer = document.getElementById("heart-container");
-let wordCount = 0;
+let wordsCount = 0;
 
 //Options values for buttons
 let options = {
@@ -41,7 +41,7 @@ let options = {
 //count
 let winCount = 0;
 let loseCount = 0;
-heartContainer.innerHTML = new Array(5 - loseCount).fill("❤️").join("");
+updateHearts();
 let count = 0;
 
 let chosenWord = "";
@@ -71,7 +71,7 @@ const youWin = () => {
     button.disabled.true;
   });
   winContainer.classList.remove("hide");
-  if (wordCount > 8) {
+  if (wordsCount > 8) {
     winButton.classList.add("hide");
     nextGameContainer.classList.remove("hide");
   }
@@ -112,8 +112,8 @@ const generateWord = (optionValue) => {
   let optionArray = options[optionValue];
   //choose random word
 
-  chosenWord = optionArray[wordCount].word;
-  hintContainer.innerHTML = `<p><b>Hint:</b> ${optionArray[wordCount].hint}</p>`;
+  chosenWord = optionArray[wordsCount].word;
+  hintContainer.innerHTML = `<p><b>Hint:</b> ${optionArray[wordsCount].hint}</p>`;
   chosenWord = chosenWord.toUpperCase();
 
   //replace every letter with span containing dash
@@ -123,13 +123,21 @@ const generateWord = (optionValue) => {
   userInputSection.innerHTML = displayItem;
 };
 
+function updateHearts() {
+  heartContainer.innerHTML =
+    new Array(5 - loseCount).fill("❤️").join("") +
+    new Array(loseCount).fill("🤍").join("");
+}
+
 //Initial Function (Called when page loads/user presses new game)
 const initializer = (type) => {
-  if (type === "new") wordCount = 0;
-  else wordCount += 1;
+  if (type === "new") wordsCount = 0;
+  else wordsCount += 1;
 
   winCount = 0;
   count = 0;
+  loseCount = 0;
+  updateHearts();
 
   //Initially erase all content and hide letteres and new game button
   userInputSection.innerHTML = "";
@@ -190,11 +198,11 @@ function chooseLetter(chosenWord1, letterText) {
     !document.getElementById("letter_" + letterText.toUpperCase()).disabled
   ) {
     loseCount++;
-    heartContainer.innerHTML = new Array(5 - loseCount).fill("❤️").join("");
+    updateHearts();
     if (loseCount > 4) {
       youLost();
       loseCount = 0;
-      heartContainer.innerHTML = new Array(5 - loseCount).fill("❤️").join("");
+      updateHearts();
     }
   }
   //disable clicked button1
