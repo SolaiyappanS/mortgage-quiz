@@ -190,6 +190,14 @@ span.dashes {
   right: 5%;
 }
 
+#coopergames_logo {
+  position: fixed;
+  bottom: 5%;
+  left: 3%;
+  top: auto;
+  width: 250px;
+}
+
 #heart-container {
   position: absolute;
   top: 5%;
