@@ -205,7 +205,7 @@ function chooseLetter(chosenWord1, letterText) {
         if (winCount == charArray.length) {
           //block all button1s
           youWin();
-        } else playSound("winSound");
+        }
       }
     });
   } else if (
