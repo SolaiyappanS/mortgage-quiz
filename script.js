@@ -70,6 +70,7 @@ const displayOptions = () => {
 
 //Block all the Buttons
 const youWin = () => {
+  playSound("gameWinSound");
   let optionsButtons = document.querySelectorAll(".options");
   let letterButtons = document.querySelectorAll(".letters");
   chosenWordContainer_1.innerHTML = chosenWord;
@@ -91,6 +92,7 @@ const youWin = () => {
 
 //Block all the Buttons
 const youLost = () => {
+  playSound("loseSound");
   let optionsButtons = document.querySelectorAll(".options");
   let letterButtons = document.querySelectorAll(".letters");
   chosenWordContainer_2.innerHTML = chosenWord;
@@ -203,13 +205,14 @@ function chooseLetter(chosenWord1, letterText) {
         if (winCount == charArray.length) {
           //block all button1s
           youWin();
-        }
+        } else playSound("winSound");
       }
     });
   } else if (
     !document.getElementById("letter_" + letterText.toUpperCase()).disabled
   ) {
     loseCount++;
+    if (loseCount <= 4) playSound("heartPopSound");
     updateHearts();
     if (loseCount > 4) {
       youLost();
@@ -219,4 +222,9 @@ function chooseLetter(chosenWord1, letterText) {
   }
   //disable clicked button1
   document.getElementById("letter_" + letterText.toUpperCase()).disabled = true;
+}
+
+function playSound(soundName) {
+  document.getElementById(soundName).currentTime = 0;
+  document.getElementById(soundName).play();
 }
