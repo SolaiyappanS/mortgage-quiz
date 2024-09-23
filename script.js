@@ -230,5 +230,6 @@ function chooseLetter(chosenWord1, letterText) {
 
 function playSound(soundName) {
   document.getElementById(soundName).currentTime = 0;
+  document.getElementById(soundName).volume = 0.2;
   document.getElementById(soundName).play();
 }

@@ -135,6 +135,7 @@ span.dashes {
 #hint-container {
   color: #009fc7;
   font-size: 20px;
+  margin-top: 10px;
 }
 
 .result_svg {
